@@ -1,0 +1,8 @@
+{% extends './base.html' %}
+{% block content %}
+  <h1>デートスポット一覧</h1>
+
+  {% for place in object_list %}
+    <p>{{ place.category.name }}, {{ place.name }}</p>
+  {% endfor %}
+{% endblock %}
