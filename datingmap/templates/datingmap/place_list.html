@@ -1,4 +1,4 @@
-{% extends './base.html' %}
+{% extends 'layout.html' %}
 {% block content %}
   <h1>デートスポット一覧</h1>
   <table class='table table-striped table hover'>
@@ -14,8 +14,10 @@
     {% endfor %}
   </table>
   
-  <div>
-    <a href='{% url "datingmap:create" %}'>新しいデートスポット</a>
-  </div>
+  {% if user.is_authenticated %}
+    <div>
+      <a href='{% url "datingmap:create" %}'>新しいデートスポット</a>
+    </div>
+  {% endif %}
   
 {% endblock %}
