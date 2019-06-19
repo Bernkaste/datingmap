@@ -1,4 +1,4 @@
-{% extends './base.html' %}
+{% extends 'layout.html' %}
 {% block content %}
   <h1>{{ place.name }}</h1>
   <div>
@@ -12,9 +12,11 @@
     frameborder='0'>
   </iframe>
   <div>
-    <a href='{% url "datingmap:index" %}'>一覧</a> |
-    <a href='{% url "datingmap:update" place.pk %}'>編集</a> |
-    <a href='{% url "datingmap:delete" place.pk %}'>削除</a>
+    <a href='{% url "datingmap:index" %}'>一覧</a> 
+    {% if request.user.id == object.author_id %}
+      |  <a href='{% url "datingmap:update" place.pk %}'>編集</a> 
+      |  <a href='{% url "datingmap:delete" place.pk %}'>削除</a>
+    {% endif %}
   </div>
     
 {% endblock %}
